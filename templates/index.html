@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 welcome-banner">
+        <h2>Basanti Variety Store</h2>
+        <h6>We are here to help you and you are here to help us.</h6>
+      </div>
+    </div>
+    <!-- start of detail section -->
+    <div class="row">
+      <div class="col-6 bg-light">
+        <div class="row">
+          <div class="col">
+            <strong>Address: Bottle Company More, Jyotinagar</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">Contact Number : 1234567890</div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <button type="button" class="btn btn-primary">New Customer</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 bg-light">Total Due : $100</div>
+    </div>
+    <!-- end of detail section -->
+
+    <div class="row">
+      <div class="col d-flex flex-row-reverse">
+        <div>
+          <div class="input-group">
+            <div class="form-outline">
+              <input type="search" id="customer_search" class="form-control" />
+              <label class="form-label" for="form1">Search</label>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-primary">
+                Search<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id="customer_view" class="col d-flex flex-wrap justify-content-center">
+        <!-- card section -->
+        <div class="card m-2" style="width: 15rem;">
+          <img class="card-img-top" src="images/customer.jpeg" alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15rem;">
+          <img class="card-img-top" src="images/customer.jpeg" alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15rem;">
+          <img class="card-img-top" src="images/customer.jpeg" alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15rem;">
+          <img class="card-img-top" src="images/customer.jpeg" alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card m-2" style="width: 15rem;">
+          <img class="card-img-top" src="images/customer.jpeg" alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <!-- end of card section -->
+      </div>
+    </div>
+  </div>
+{% endblock %}

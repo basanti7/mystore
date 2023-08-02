@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+            
+    <div class="col-lg-6 offset-3 bg-light">
+        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+
+                <legend>Enter Details</legend>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="customer_name">Name : </label>
+                    <div class="col-md-12">
+                        <input id="customer_name" name="customer_name" type="text"
+                            placeholder="Name of customer" class="form-control input-lg" required>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="customer_address">Address : </label>
+                    <div class="col-md-12">
+                        <input id="customer_address" name="customer_address" type="text"
+                            placeholder="Address" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="contact_number">Contact Number : </label>
+                    <div class="col-md-12">
+                        <input id="contact_number" name="contact_number" type="text"
+                            placeholder="Phone Number :" class="form-control input-md">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-6 control-label" for="additional_info">Additional Comment:</label>
+                    <div class="col-md-12">
+                        <textarea class="form-control" id="additional_info" name="additional_info"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="customer_image">File Button</label>
+                    <div class="col-md-12">
+                        <input id="customer_image" onchange="previewImage(event)" name="customer_image" class="input-file" type="file">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                               <label class="col-md-4 control-label" for="singlebutton"></label>
+                               <div class="col-md-4">
+                                   <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
+                               </div>  
+                       </div>
+                    </div>
+                    <div class="col-6">
+                        <div id="imagePreview"></div>
+                    </div>
+
+                </div>
+                
+
+            </fieldset>
+        </form>
+    </div> 
+    
+    <script type="text/javascript">
+        function previewImage(event) {
+          const file = event.target.files[0];
+          const reader = new FileReader();
+
+          reader.onload = function(event) {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.innerHTML = '<img src="' + event.target.result + '" alt="Preview">';
+          }
+    
+          if (file) {
+            reader.readAsDataURL(file);
+          }
+        }
+    
+        function validateForm() {
+          // Add your form validation logic here
+          // For example, check if the image is uploaded, etc.
+          return true; // Return true to allow form submission
+        }
+      </script>
+{% endblock  %}
