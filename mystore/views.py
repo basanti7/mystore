@@ -4,10 +4,16 @@ from shopdue import models
 
 
 def homePage(request):
-    return render(request, 'index.html')
+    data = {
+        'page_title': 'Home'
+    }
+    return render(request, 'index.html', data)
 
 
 def customerRegistration(request):
+    data = {
+        'page_title': 'New Customer'
+    }
     if request.method == 'POST':
         # Use request.POST dictionary to access the form data
         customer_name = request.POST.get('customer_name')
@@ -25,6 +31,6 @@ def customerRegistration(request):
         # For example, you can save it to the database or perform some action with it
 
         # For now, let's just return a response to show the captured data
-        return render(request, 'customer_registration.html')
+        return render(request, 'customer_registration.html', data)
     else:
-        return render(request, 'customer_registration.html')
+        return render(request, 'customer_registration.html', data)
