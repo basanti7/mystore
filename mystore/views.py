@@ -7,6 +7,12 @@ def homePage(request):
     data = {
         'page_title': 'Home'
     }
+    magic_customers = models.Customer.objects.all()
+    data['customers'] = magic_customers
+    # customer_list = []
+    # for customer in magic_customers:
+    #     print(customer.customer_name)
+
     return render(request, 'index.html', data)
 
 
