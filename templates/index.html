@@ -50,22 +50,21 @@
       </div>
     </div>
     <div class="row">
-      {% for customer in customers %}
-      <img src="/media/{{customer.customer_image}}" alt="">
-      {% comment %} <div id="customer_view" class="col d-flex flex-wrap justify-content-center">
-        <!-- card section -->
-        <div class="card m-2" style="width: 15rem;">
-          <img class="card-img-top" src="/media/{{customer.customer_image}}" alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title">{{customer.customer_name}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div id="customer_view" class="col d-flex flex-wrap justify-content-center">
+        {% for customer in customers %}
+          <!-- card section -->
+          <div class="card m-2" style="width: 15rem;">
+            <img class="card-img-top" style="border-radius: 50%;" src="/media/{{ customer.customer_image }}" alt="Card image cap" />
+            <div class="card-body">
+              <h5 class="card-title">{{ customer.customer_name }}</h5>
+              <p class="card-text">{{customer.additional_info}}</p>
+              <a href="#" class="btn btn-primary">See Details</a>
+            </div>
           </div>
-        </div>
+        {% endfor %}
 
         <!-- end of card section -->
-      </div> {% endcomment %}
-      {% endfor %}
+      </div>
     </div>
   </div>
 {% endblock %}

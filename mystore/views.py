@@ -40,3 +40,6 @@ def customerRegistration(request):
         return render(request, 'customer_registration.html', data)
     else:
         return render(request, 'customer_registration.html', data)
+
+def customerProfile(request):
+    return render(request, 'customer_profile.html')

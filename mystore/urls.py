@@ -23,8 +23,9 @@ from mystore import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homePage, name='home'),
-    path('customer-registration/', views.customerRegistration, name='customer_registration')
+    path('customer-registration/', views.customerRegistration, name='customer_registration'),
+    path('profile/', views.customerProfile)
 ]
 
 if settings.DEBUG:
-    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
