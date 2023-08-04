@@ -3,10 +3,10 @@
   <div class="container">
     <div class="row">
       <div class="col-6">
-        <h4>Michel Jacson</h4>
+        <h4>{{customer.customer_name}}</h4>
       </div>
       <div class="col-6">
-        <h4>Invoice No:</h4>
+        <h4>Invoice No:{{customer.id}}</h4>
       </div>
     </div>
     <!-- start of detail section -->
@@ -14,11 +14,11 @@
       <div class="col-6 bg-light">
         <div class="row">
           <div class="col">
-            <strong>Address: Bottle Company More, Jyotinagar</strong>
+            <strong>{{customer.customer_address}}</strong>
           </div>
         </div>
         <div class="row">
-          <div class="col">Contact Number : 1234567890</div>
+          <div class="col">Contact Number : {{customer.contact_number}}</div>
         </div>
         <div class="row">
           <div class="col">Total Due: $100</div>
@@ -31,7 +31,7 @@
       </div>
       <div class="col-6 bg-light">
         <div class="d-flex flex-row-reverse">
-          <img src="images/customer.jpeg" style="height: 200px; border-radius: 50%;" class="float-left" alt="..." />
+          <img src="/media/{{customer.customer_image}}" style="height: 200px; border-radius: 50%;" class="float-left" alt="..." />
         </div>
       </div>
     </div>

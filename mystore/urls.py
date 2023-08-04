@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homePage, name='home'),
     path('customer-registration/', views.customerRegistration, name='customer_registration'),
-    path('profile/', views.customerProfile)
+    path('profile/', views.customerProfile),
+    path('profile/21', views.invoiceOfSingleCustomer)
 ]
 
 if settings.DEBUG:

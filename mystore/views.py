@@ -35,11 +35,17 @@ def customerRegistration(request):
         instance.save()
         # You can now process the data as per your requirements
         # For example, you can save it to the database or perform some action with it
-
         # For now, let's just return a response to show the captured data
         return render(request, 'customer_registration.html', data)
     else:
         return render(request, 'customer_registration.html', data)
 
+
 def customerProfile(request):
-    return render(request, 'customer_profile.html')
+    customer = models.Customer.objects.get(pk=21)
+    data = {'customer': customer}
+    return render(request, 'customer_profile.html', data)
+
+
+def invoiceOfSingleCustomer(request):
+    return render(request, 'invoice.html')
