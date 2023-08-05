@@ -2,6 +2,8 @@
 // js code for modal
 
 // end of js code for modal
+
+const purchase_list = [];
 function addPurchase() {
     let product_name_el = document.getElementById('product_name');
     let product_price_el = document.getElementById('product_price');
@@ -28,6 +30,8 @@ function addPurchase() {
         quantity: parseFloat(product_quantity_el.value)
     };
     purchase.total = purchase.price * purchase.quantity;
+
+    purchase_list.push(purchase);
 
     // Find a <table> element with id="myTable":
     let table = document.getElementById("purchase_table");
@@ -57,10 +61,21 @@ function addPurchase() {
     product_price_el.value = "";
     product_quantity_el.value = "";
 
+    
+    document.getElementById('products').value = JSON.stringify(purchase_list);
+    // console.log('purchase list')
+    // console.log(JSON.stringify(purchase_list))
+    console.log(document.getElementById('products').value)
+}
+function handlePurchaseSubmit(){
+    // Find the form by its ID
+    const form = document.getElementById('purchase_form');
+            
+    // Trigger the form's submit event
+    form.submit();
 }
 
-
-console.log(purchase);
+// console.log(purchase);
 
 function clicked() {
     alert('clicked!');
@@ -108,4 +123,21 @@ function addProduct() {
 
     // Update the hidden input field with the updated list of products
     document.getElementById('products').value = JSON.stringify(productList);
+}
+
+function getCurrentDate(){
+      // Get the current date
+      const currentDate = new Date();
+
+      // Format the date as "YYYY-MM-DD" (required by the input type="date" field)
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const day = String(currentDate.getDate()).padStart(2, '0');
+    //   const formattedDate = `${year}-${month}-${day}`;
+          const formattedDate = `${day}-${month}-${year}`;
+
+
+      // Set the default value of the input field to the current date
+    //   document.getElementById('date-input').value = formattedDate;
+    return formattedDate
 }

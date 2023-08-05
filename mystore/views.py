@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+import json
 from django.shortcuts import render
 from shopdue import models
 
@@ -48,4 +49,24 @@ def customerProfile(request):
 
 
 def invoiceOfSingleCustomer(request):
+    json_string = '[{"serial":1,"product":"wer","price":33,"quantity":4,"total":132},{"serial":1,"product":"fsd","price":3,"quantity":4,"total":12}]'
+    python_arr = json.loads(json_string)
+
+    for obb in python_arr:
+        print(obb['product'])
+
+
+    if request.method == 'POST':
+        # Use request.POST dictionary to access the form data
+        products = request.POST.get('products')
+        temp_arr = json.loads(products)
+        # generate a new bill with new invoice number
+        # customer = foreign key of customer
+        discount = 0
+        total = 0
+        paid = 0
+        due = 0
+        
+        for product in temp_arr:
+            instance = models.Purchase()
     return render(request, 'invoice.html')
