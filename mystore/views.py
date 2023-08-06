@@ -42,8 +42,8 @@ def customerRegistration(request):
         return render(request, 'customer_registration.html', data)
 
 
-def customerProfile(request):
-    customer = models.Customer.objects.get(pk=21)
+def customerProfile(request, customer_id):
+    customer = models.Customer.objects.get(pk=customer_id)
     data = {'customer': customer}
     return render(request, 'customer_profile.html', data)
 
@@ -53,20 +53,35 @@ def invoiceOfSingleCustomer(request):
     python_arr = json.loads(json_string)
 
     for obb in python_arr:
-        print(obb['product'])
-
+        print(obb['product'] + 'sal')
 
     if request.method == 'POST':
         # Use request.POST dictionary to access the form data
         products = request.POST.get('products')
+        dis = request.POST.get('discount')
         temp_arr = json.loads(products)
-        # generate a new bill with new invoice number
-        # customer = foreign key of customer
         discount = 0
+
+        if dis != None:
+            discount = int(dis)
         total = 0
         paid = 0
         due = 0
-        
+
+        for obb in temp_arr:
+            total += obb['total']
+
+        total -= discount
+        print("total is " + str(total))
+        # generate a new bill with new invoice number
+        # customer = foreign key of customer
+        bill_instnce = models.Bill(
+            customer_id=21, discount=4, total=total, paid=0, due=total)
+        bill_instnce.save()
+        print('Saving')
+
         for product in temp_arr:
-            instance = models.Purchase()
+            instance = models.Purchase(
+                bill=bill_instnce, item=product['item'], price=product['price'], quantity=product['quantity'])
+            instance.save()
     return render(request, 'invoice.html')

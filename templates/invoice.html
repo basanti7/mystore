@@ -24,12 +24,12 @@
       <div class="col-6 bg-light">
           <div class="row">
             <div class="col">
-              Date: <input type="date" default="getCurrentDate()">
+              Date: <input type="date" id='date_input'>
             </div>
           </div>
           <div class="row">
             <div class="col">
-              Discount:
+              Discount: <input id='discount_input' type="number" default="0" min="0" onchange="handleDiscount()">
             </div>
           </div>
           <div class="row">
@@ -69,6 +69,7 @@
     <form id='purchase_form' action="" method="post">
       {% csrf_token %}
       <input type="hidden" id='products' value="demo" name="products">
+      <input type="hidden" id='discount' value="0" name="discount">
     </form>
 
     <div class="row">

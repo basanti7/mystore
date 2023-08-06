@@ -58,7 +58,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ customer.customer_name }}</h5>
               <p class="card-text">{{customer.additional_info}}</p>
-              <a href="#" class="btn btn-primary">See Details</a>
+              <a href="/profile/{{customer.id}}" class="btn btn-primary">See Details</a>
             </div>
           </div>
         {% endfor %}

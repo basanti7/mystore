@@ -22,10 +22,13 @@ function addPurchase() {
         alert("Please enter at least one quantity.");
         return;
     }
+    // Find a <table> element with id="myTable":
+    let table = document.getElementById("purchase_table");
+    let number_of_rows = table.rows.length;
 
     let purchase = {
-        serial: 1,
-        product: product_name_el.value,
+        serial: number_of_rows,
+        item: product_name_el.value,
         price: parseFloat(product_price_el.value),
         quantity: parseFloat(product_quantity_el.value)
     };
@@ -33,9 +36,8 @@ function addPurchase() {
 
     purchase_list.push(purchase);
 
-    // Find a <table> element with id="myTable":
-    let table = document.getElementById("purchase_table");
-    let number_of_rows = table.rows.length;
+
+
 
     console.log(number_of_rows);
 
@@ -61,16 +63,16 @@ function addPurchase() {
     product_price_el.value = "";
     product_quantity_el.value = "";
 
-    
+
     document.getElementById('products').value = JSON.stringify(purchase_list);
     // console.log('purchase list')
     // console.log(JSON.stringify(purchase_list))
     console.log(document.getElementById('products').value)
 }
-function handlePurchaseSubmit(){
+function handlePurchaseSubmit() {
     // Find the form by its ID
     const form = document.getElementById('purchase_form');
-            
+
     // Trigger the form's submit event
     form.submit();
 }
@@ -125,19 +127,21 @@ function addProduct() {
     document.getElementById('products').value = JSON.stringify(productList);
 }
 
-function getCurrentDate(){
-      // Get the current date
-      const currentDate = new Date();
+function getCurrentDate() {
+    // Get the current date
+    const currentDate = new Date();
 
-      // Format the date as "YYYY-MM-DD" (required by the input type="date" field)
-      const year = currentDate.getFullYear();
-      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-      const day = String(currentDate.getDate()).padStart(2, '0');
-    //   const formattedDate = `${year}-${month}-${day}`;
-          const formattedDate = `${day}-${month}-${year}`;
+    // Format the date as "YYYY-MM-DD" (required by the input type="date" field)
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+    // Set the default value of the input field to the current date
+    document.getElementById('date_input').value = formattedDate
 
-
-      // Set the default value of the input field to the current date
-    //   document.getElementById('date-input').value = formattedDate;
-    return formattedDate
 }
+function handleDiscount(){
+    let dis = document.getElementById('discount_input').value
+    document.getElementById('discount').value = dis
+}
+getCurrentDate()
