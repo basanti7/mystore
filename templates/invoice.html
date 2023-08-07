@@ -24,7 +24,7 @@
       <div class="col-6 bg-light">
           <div class="row">
             <div class="col">
-              Date: <input type="date" id='date_input'>
+              Date: <input type="date" id='date_input' onchange="handleDateInput()">
             </div>
           </div>
           <div class="row">
@@ -70,6 +70,7 @@
       {% csrf_token %}
       <input type="hidden" id='products' value="demo" name="products">
       <input type="hidden" id='discount' value="0" name="discount">
+      <input type="hidden" id='date' value="" name="date">
     </form>
 
     <div class="row">
@@ -130,7 +131,7 @@
                                                 required</span>
                                         </div>
                                     </div>
-
+                                    
                                     <!-- Text input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="product_price">Price : </label>

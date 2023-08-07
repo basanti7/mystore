@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 import json
 from django.shortcuts import render
+from django.shortcuts import redirect
+from datetime import datetime
 from shopdue import models
 
 
@@ -44,21 +46,21 @@ def customerRegistration(request):
 
 def customerProfile(request, customer_id):
     customer = models.Customer.objects.get(pk=customer_id)
-    data = {'customer': customer}
+    bills = customer.bills.all()
+
+    data = {'customer': customer, 'bills': bills}
     return render(request, 'customer_profile.html', data)
 
 
-def invoiceOfSingleCustomer(request):
-    json_string = '[{"serial":1,"product":"wer","price":33,"quantity":4,"total":132},{"serial":1,"product":"fsd","price":3,"quantity":4,"total":12}]'
-    python_arr = json.loads(json_string)
-
-    for obb in python_arr:
-        print(obb['product'] + 'sal')
-
+def invoiceOfSingleCustomer(request, customer_id):
+    data = {
+        'page_title': 'Invoice',
+    }
     if request.method == 'POST':
         # Use request.POST dictionary to access the form data
         products = request.POST.get('products')
         dis = request.POST.get('discount')
+        invoice_date = request.POST.get('date')
         temp_arr = json.loads(products)
         discount = 0
 
@@ -76,7 +78,7 @@ def invoiceOfSingleCustomer(request):
         # generate a new bill with new invoice number
         # customer = foreign key of customer
         bill_instnce = models.Bill(
-            customer_id=21, discount=4, total=total, paid=0, due=total)
+            customer_id=customer_id, date=invoice_date, discount=0, total=total, paid=0, due=total)
         bill_instnce.save()
         print('Saving')
 
@@ -84,4 +86,5 @@ def invoiceOfSingleCustomer(request):
             instance = models.Purchase(
                 bill=bill_instnce, item=product['item'], price=product['price'], quantity=product['quantity'])
             instance.save()
-    return render(request, 'invoice.html')
+        return redirect(customerProfile, customer_id=customer_id)
+    return render(request, 'invoice.html', data)

@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 import os
+from datetime import date
 # Create your models here.
 def generate_unique_filename(instance, filename):
     # Get the original file extension
@@ -25,9 +26,10 @@ class Customer(models.Model):
 
 
 class Bill(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, related_name='bills' , on_delete=models.CASCADE)
     invoice_no = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False)
+    date = models.DateField(auto_now_add=True, null=True)
     discount = models.FloatField(default=0)
     total = models.FloatField(default=0)
     paid = models.FloatField(default=0)

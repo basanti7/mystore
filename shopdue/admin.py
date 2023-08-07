@@ -11,7 +11,7 @@ class CustomerAdmin(admin.ModelAdmin):
 
 
 class BillAdmin(admin.ModelAdmin):
-    list_display = ['customer', 'invoice_no',
+    list_display = ['customer', 'invoice_no', 'date',
                     'discount', 'total', 'paid', 'due']
 
 

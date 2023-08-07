@@ -144,4 +144,9 @@ function handleDiscount(){
     let dis = document.getElementById('discount_input').value
     document.getElementById('discount').value = dis
 }
+function handleDateInput(){
+    let changedDate = document.getElementById('date_input').value
+    document.getElementById('date').value = changedDate
+    console.log('changed date is : ' + changedDate)
+}
 getCurrentDate()
