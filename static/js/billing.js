@@ -49,7 +49,7 @@ function addPurchase() {
     sl_cell.innerHTML = number_of_rows;
 
     let name_cell = row.insertCell(1);
-    name_cell.innerHTML = purchase.product;
+    name_cell.innerHTML = purchase.item;
 
     let price_cell = row.insertCell(2);
     price_cell.innerHTML = purchase.price;
