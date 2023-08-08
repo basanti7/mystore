@@ -74,7 +74,7 @@ def invoiceOfSingleCustomer(request, customer_id):
             total += obb['total']
 
         total -= discount
-        print("total is " + str(total))
+        # print("total is " + str(total))
         # generate a new bill with new invoice number
         # customer = foreign key of customer
         bill_instnce = models.Bill(
