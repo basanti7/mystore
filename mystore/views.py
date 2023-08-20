@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from datetime import datetime
 from shopdue import models
+from django.db.models import Sum
 
 
 def homePage(request):
@@ -11,7 +12,18 @@ def homePage(request):
         'page_title': 'Home'
     }
     magic_customers = models.Customer.objects.all()
-    data['customers'] = magic_customers
+    new_list = []
+    shop_due_total = 0
+
+    for cust in magic_customers:
+        cust.total_due = models.Bill.objects.filter(customer=cust).aggregate(tot_due = Sum('due'))['tot_due']
+        if cust.total_due is not None:
+            shop_due_total += cust.total_due
+        # print('total due is : ' + str(cust.total_due))
+        new_list.append(cust)
+
+    data['customers'] = new_list
+    data['shop_due_total'] = shop_due_total
     # customer_list = []
     # for customer in magic_customers:
     #     print(customer.customer_name)

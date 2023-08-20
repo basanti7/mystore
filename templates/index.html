@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="col-6 bg-light">Total Due 3: 100</div>
+      <div class="col-6 bg-light">Total Due: {{shop_due_total}}</div>
     </div>
     <!-- end of detail section -->
 
@@ -58,7 +58,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ customer.customer_name }}</h5>
               <p class="card-text">{{customer.additional_info}}</p>
-              <a href="/profile/{{customer.id}}" class="btn btn-primary">See Details</a>
+              <a href="/profile/{{customer.id}}" class="btn btn-primary">Due: {{customer.total_due}}. Details..</a>
             </div>
           </div>
         {% endfor %}

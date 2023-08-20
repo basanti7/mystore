@@ -20,6 +20,7 @@ class Customer(models.Model):
     contact_number = models.CharField(max_length=12)
     additional_info = models.TextField()
     customer_image = models.ImageField(upload_to=generate_unique_filename, null=True)
+    total_due = 0
 
     def __str__(self) -> str:
         return self.customer_name
