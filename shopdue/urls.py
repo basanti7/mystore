@@ -5,5 +5,5 @@ from django.conf.urls.static import static
 from shopdue import views
 
 urlpatterns = [
-    path('bill/details', views.detailOfSingleBill, name='single_bill_detail')
+    path('bill/details/<str:invoice_no>', views.detailOfSingleBill, name='single_bill_detail')
 ]
