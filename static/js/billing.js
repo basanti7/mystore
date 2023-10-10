@@ -138,8 +138,8 @@ function getCurrentDate() {
     const formattedDate = `${year}-${month}-${day}`;
     // Set the default value of the input field to the current date
     document.getElementById('date_input').value = formattedDate
-
 }
+
 function handleDiscount(){
     let dis = document.getElementById('discount_input').value
     document.getElementById('discount').value = dis
@@ -150,3 +150,37 @@ function handleDateInput(){
     console.log('changed date is : ' + changedDate)
 }
 getCurrentDate()
+
+// payment.html page
+function confirmSubmit() {
+    // Display a confirmation dialog
+    if (confirm("Are you sure you want to submit this form?")) {
+        // If the user confirms, submit the form
+        document.getElementById("due-payment-form").submit();
+        return true;
+    } else {
+        // If the user cancels, don't submit the form
+        return false;
+    }
+}
+
+
+function validateDueInput(event) {
+    // alert("hell")
+    const numberInput = document.getElementById("due_amount_pay");
+    const inputValue = parseFloat(numberInput.value);
+    console.log(event.keyCode)
+    if(event.keyCode == 189){
+        alert("Enter positive numbers only")
+        numberInput.value = 0
+    }
+    // if(inputValue.trim() === ""){}
+    else if (numberInput.value.trim() === "-" || inputValue < 0) {
+        // numberInput.setCustomValidity("Please enter a positive number.");
+        alert("Enter positive numbers only")
+        numberInput.value = 0
+    } else {
+        numberInput.setCustomValidity("");
+    }
+}
+// end of payment.html

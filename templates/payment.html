@@ -1,6 +1,18 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
-<h1>This is the payment page</h1>
+  <div class="container">
+    <h1>You are a good guy. Pay your due please.</h1>
 
-Total Due: {{total_due}}
-{% endblock  %}
+    <h5>Total Due: {{ total_due }}</h5>
+
+    <form id='due-payment-form'>
+      <div class="form-group">
+        <label for="due_amount_pay">Amount To Be Paid</label>
+        <input id='due_amount_pay' onkeyup="validateDueInput(event)" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter amount" />
+      </div>
+
+      <button type="submit" class="btn btn-primary" onclick="return confirmSubmit()">Submit</button>
+    </form>
+  </div>
+  <script src="/static/js/billing.js" type="text/javascript"></script>
+{% endblock %}
