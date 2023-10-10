@@ -69,7 +69,7 @@
             <tr>
               <td>{{ bill.date }}</td>
               <td>
-                <a href="#">{{ bill.invoice_no }}</a>
+                <a href="/due/bill/details/{{bill.invoice_no}}?query={{bill.invoice_no}}">{{ bill.invoice_no }}</a>
               </td>
               <td>{{ bill.paid }}</td>
               <td class="due_count">{{ bill.due }}</td>
